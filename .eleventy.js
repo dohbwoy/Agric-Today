@@ -3,6 +3,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "greenminds-brand.jpg": "greenminds-brand.jpg" });
   eleventyConfig.addPassthroughCopy({ "admin": "admin" });
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
+  eleventyConfig.addFilter("currentYear", () => new Date().getFullYear());
   eleventyConfig.addFilter("dateReadable", (date) => {
     const d = new Date(date);
     return d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
