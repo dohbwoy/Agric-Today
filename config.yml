@@ -1,0 +1,40 @@
+# AgricToday by GreenMinds Media
+
+A responsive agriculture publication with a content editor at `/admin/`. Built with Eleventy + Decap CMS and ready for free Netlify hosting.
+
+## Publish it online (free tier)
+
+You need your own GitHub and Netlify accounts. I cannot create or attach accounts on your behalf from this chat, so the site is prepared for you to deploy into accounts you control.
+
+1. Create a GitHub repository named `agrictoday` and upload all files in this folder (including hidden files such as `.eleventy.js` and `.gitignore`).
+2. Sign in to Netlify and choose **Add new site → Import an existing project**. Connect GitHub and select `agrictoday`.
+3. Set build command to `npm run build` and publish directory to `_site` (the included `netlify.toml` already sets these).
+4. After the first deploy, open the Netlify site dashboard → **Integrations / Identity** (the exact menu may vary). Enable Netlify Identity if offered, set registration to **Invite only**, then enable **Git Gateway**. If your Netlify dashboard does not offer Identity/Git Gateway on your plan, use Decap's GitHub OAuth backend instead; that requires an OAuth provider setup.
+5. In Netlify Identity, invite your own email address and any editors you want to authorize. Accept the invite and set a password.
+6. Visit `https://YOUR-SITE.netlify.app/admin/` and sign in. Choose **AgricToday Articles → New AgricToday Article** to add a headline, date, author, category, summary, image and article body. Publish when ready.
+
+Netlify/Decap setup details can change over time. Decap's official guide: https://decapcms.org/docs/configure-decap-cms/ and GitHub backend guide: https://decapcms.org/docs/github-backend/
+
+## What is included
+
+- AgricToday editorial homepage, responsive layout and story cards
+- GreenMinds brand artwork supplied by you
+- Starter welcome article
+- `/admin/` content studio for creating, editing and uploading article images
+- Draft/editorial workflow and Git-backed content history
+- Netlify build configuration
+
+## Brand and content notes
+
+The site uses deep greens and a lime accent inspired by your supplied GreenMinds image. Display fonts use Playfair Display and body copy uses DM Sans. Replace the placeholder email `hello@greenminds.example` in `src/index.njk` with your real contact email before launch.
+
+## Local preview
+
+Requires Node.js 18+. Run:
+
+```bash
+npm install
+npm run build
+```
+
+The generated website will be in `_site/`. To preview locally, use any static file server pointed at `_site/`.
