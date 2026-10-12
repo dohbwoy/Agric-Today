@@ -1,0 +1,10 @@
+<article class="post-wrap">
+  <a class="post-back" href="/#latest">← Back to all stories</a>
+  <p class="eyebrow green">{{ category or "Field Notes" }}</p>
+  <h1>{{ title }}</h1>
+  {% if excerpt %}<p class="post-deck">{{ excerpt }}</p>{% endif %}
+  <div class="post-meta">{{ page.date | dateReadable }} · {{ author or "AgricToday Desk" }}</div>
+  {% if thumbnail %}<img class="post-cover" src="{{ thumbnail }}" alt="{{ title }}">{% endif %}
+  <div class="post-body">{{ content | safe }}</div>
+  <div class="post-footer">Published by AgricToday, GreenMinds Media · <a href="/#latest">Explore more stories ↗</a></div>
+</article>
