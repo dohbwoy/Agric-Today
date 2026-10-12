@@ -8,9 +8,6 @@ public_folder: "/assets/uploads"
 
 publish_mode: simple
 
-site_url: https://agrictoday.netlify.app
-display_url: https://agrictoday.netlify.app
-
 collections:
   - name: "articles"
     label: "AgricToday Articles"
