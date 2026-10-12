@@ -1,0 +1,29 @@
+backend:
+  name: github
+  repo: dohbwoy/Agric-Today
+  branch: main
+
+media_folder: "src/assets/uploads"
+public_folder: "/assets/uploads"
+
+publish_mode: simple
+
+site_url: https://agrictoday.netlify.app
+display_url: https://agrictoday.netlify.app
+
+collections:
+  - name: "articles"
+    label: "AgricToday Articles"
+    label_singular: "Article"
+    folder: "src/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    preview_path: "posts/{{slug}}/"
+    fields:
+      - { label: "Headline", name: "title", widget: "string" }
+      - { label: "Publish date", name: "date", widget: "datetime" }
+      - { label: "Author", name: "author", widget: "string", default: "AgricToday Desk" }
+      - { label: "Category", name: "category", widget: "select", options: ["Farming", "Agribusiness", "Markets", "Climate & Sustainability", "Technology", "Food & Nutrition", "Policy", "Opinion"] }
+      - { label: "Featured image", name: "thumbnail", widget: "image", required: false }
+      - { label: "Short summary", name: "excerpt", widget: "text" }
+      - { label: "Article body", name: "body", widget: "markdown" }
