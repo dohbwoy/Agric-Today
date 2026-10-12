@@ -1,25 +1,32 @@
-backend:
-  name: git-gateway
-  branch: main
-
-media_folder: "src/assets/uploads"
-public_folder: "/assets/uploads"
-
-publish_mode: editorial_workflow
-
-collections:
-  - name: "articles"
-    label: "AgricToday Articles"
-    label_singular: "Article"
-    folder: "src/posts"
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    preview_path: "posts/{{slug}}/"
-    fields:
-      - { label: "Headline", name: "title", widget: "string" }
-      - { label: "Publish date", name: "date", widget: "datetime" }
-      - { label: "Author", name: "author", widget: "string", default: "AgricToday Desk" }
-      - { label: "Category", name: "category", widget: "select", options: ["Farming", "Agribusiness", "Markets", "Climate & Sustainability", "Technology", "Food & Nutrition", "Policy", "Opinion"] }
-      - { label: "Featured image", name: "thumbnail", widget: "image", required: false }
-      - { label: "Short summary", name: "excerpt", widget: "text" }
-      - { label: "Article body", name: "body", widget: "markdown" }
+---
+layout: base.njk
+title: AgricToday — GreenMinds Media
+description: Practical agriculture news, ideas and opportunity for a growing Africa.
+---
+<section class="hero">
+  <div class="hero-content">
+    <span class="eyebrow">GREENMINDS MEDIA PRESENTS</span>
+    <h1>Agric<span>Today</span></h1>
+    <p>Where agriculture meets opportunity.</p>
+    <a class="button" href="#latest">Explore the latest <span aria-hidden="true">↘</span></a>
+  </div>
+  <div class="hero-note">Growing knowledge.<br>Growing futures.</div>
+</section>
+<section class="intro">
+  <div><span class="eyebrow green">THE FIELD NOTES</span><h2>Better insights.<br><em>Stronger harvests.</em></h2></div>
+  <p>AgricToday is the media home of GreenMinds — sharing useful stories, fresh perspectives and practical ideas for farmers, agripreneurs and everyone shaping the future of food.</p>
+</section>
+<section id="latest" class="latest">
+  <div class="section-head"><div><span class="eyebrow green">FROM THE FIELD</span><h2>Latest stories</h2></div><span class="section-caption">Ideas for a changing agricultural world</span></div>
+  <div class="article-grid">
+  {% for post in collections.posts | reverse %}
+    <article class="article-card">
+      <a class="article-image" href="{{ post.url }}">{% if post.data.thumbnail %}<img src="{{ post.data.thumbnail }}" alt="">{% else %}<div class="image-placeholder"><span>AGRIC<br><b>TODAY</b></span><i>✳</i></div>{% endif %}<span class="category">{{ post.data.category or "Field Notes" }}</span></a>
+      <div class="article-copy"><div class="meta">{{ post.date | dateReadable }} · {{ post.data.author or "AgricToday Desk" }}</div><h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3><p>{{ post.data.excerpt }}</p><a class="read-link" href="{{ post.url }}">Read story <span>↗</span></a></div>
+    </article>
+  {% else %}
+    <div class="empty-state"><div class="empty-icon">✳</div><h3>Your first story starts here.</h3><p>Use the content studio to publish news, farm stories, market updates and ideas. Your articles will appear here automatically.</p><a class="button dark" href="/admin/">Open content studio ↗</a></div>
+  {% endfor %}
+  </div>
+</section>
+<section class="newsletter"><div><span class="eyebrow">STAY IN THE KNOW</span><h2>Good things grow<br>when we share.</h2></div><p>Follow the ideas, people and innovations moving agriculture forward. Have a story worth telling? We’d love to hear from you.</p><a class="button light" href="mailto:hello@greenminds.example?subject=AgricToday%20story%20pitch">Pitch a story ↗</a></section>
